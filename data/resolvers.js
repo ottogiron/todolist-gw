@@ -1,23 +1,22 @@
+import { Todo } from './conectors'
+
 const resolvers = {
     Query: {
       todo(root, args) {
         return { id: 1, version: 2, items: [], createdAt: "", updatedAt:""};
       },
       allTodos() {
-        return [{ id: 1, version: 2, items: [], createdAt: "", updatedAt:""}];
+        return Todo.allTodos()
       }
     },
     Todo: {
       items(todo) {
-        return [
-          { id: 1, desc: "Item 1", completed: false},
-          { id: 2, desc: "Item 2", completed: true},
-        ];
+        return todo.items;
       }
     },
     Item: {
       todo(item) {
-        return { id: 1, version: 2};
+        return item.todo;
       }
     }
   };
