@@ -1,4 +1,4 @@
-# apollo-tutorial-kit
+# Todo List GraphQL GW implemented using Apollo Server
 
 Starting point for the Apollo GraphQL Server tutorial.
 

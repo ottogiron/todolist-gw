@@ -31,6 +31,10 @@ engine.listen({
 });
 
 
-graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ schema, tracing: true}));
+graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
+  schema, 
+  tracing: true,
+  cacheControl: true,
+}));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 graphQLServer.use(compression());
