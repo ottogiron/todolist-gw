@@ -17,6 +17,7 @@ type Item {
     id: Int
     desc: String
     completed: Boolean
+    todo: Todo
 }
 
 

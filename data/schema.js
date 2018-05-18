@@ -1,5 +1,7 @@
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
-import mocks from './mocks';
+import resolvers from './resolvers';
+
+//import mocks from './mocks';
 import path from 'path'
 import fs from 'fs'
 
@@ -8,8 +10,8 @@ const typeDefs = fs.readFileSync(schemaFile, 'utf8');
 
 
 
-const schema = makeExecutableSchema({ typeDefs });
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-addMockFunctionsToSchema({ schema, mocks });
+//addMockFunctionsToSchema({ schema, mocks });
 
 export default schema;
