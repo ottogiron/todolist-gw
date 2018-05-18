@@ -1,7 +1,7 @@
 
-type Query {
-  testString: String
+type Query { 
   allTodos:[Todo]
+  todo(id: String): Todo
 }
 
 type Todo {
