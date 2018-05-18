@@ -1,0 +1,23 @@
+
+type Query {
+  testString: String
+  allTodos:[Todo]
+}
+
+type Todo {
+  id: String
+  version: Int
+  items: [Item]
+  createdAt: String
+  updatedAt: String
+}
+
+
+type Item {
+    id: Int
+    desc: String
+    completed: Boolean
+}
+
+
+

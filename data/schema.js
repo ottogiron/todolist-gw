@@ -1,11 +1,12 @@
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import mocks from './mocks';
+import path from 'path'
+import fs from 'fs'
 
-const typeDefs = `
-type Query {
-  testString: String
-}
-`;
+const schemaFile = path.join(__dirname, 'schema.graphql');
+const typeDefs = fs.readFileSync(schemaFile, 'utf8');
+
+
 
 const schema = makeExecutableSchema({ typeDefs });
 
