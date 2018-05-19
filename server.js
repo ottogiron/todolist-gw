@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import schema from './data/schema';
 import compression from 'compression';
 import { ApolloEngine } from 'apollo-engine';
+import cors from 'cors';
 
 
 const GRAPHQL_PORT = 3000;
@@ -18,6 +19,15 @@ const engine = new ApolloEngine({
 
 const graphQLServer = express();
 
+graphQLServer.use('/graphql',cors(), bodyParser.json(), graphqlExpress({ 
+  schema, 
+  tracing: true,
+  cacheControl: true,
+}));
+graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+graphQLServer.use(compression());
+
+
 // Instead of app.listen():
 engine.listen({
   port: GRAPHQL_PORT,
@@ -31,10 +41,4 @@ engine.listen({
 });
 
 
-graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
-  schema, 
-  tracing: true,
-  cacheControl: true,
-}));
-graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-graphQLServer.use(compression());
+
