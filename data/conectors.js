@@ -11,7 +11,10 @@ const Todo = {
         })
     },
     todo(id) {
-
+        this.allTodos()
+        .then(todos => {
+            return todos[0];
+        })
     }
 }
 
@@ -25,4 +28,4 @@ function mapTodo(todo) {
     return todo;
 }
 
-export {Todo}
+export { Todo }

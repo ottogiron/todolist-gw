@@ -3,7 +3,10 @@ import { Todo } from './conectors'
 const resolvers = {
     Query: {
       todo(root, args) {
-        return { id: 1, version: 2, items: [], createdAt: "", updatedAt:""};
+       return Todo.allTodos()
+       .then((todos) => {
+          return todos[0];
+       });        
       },
       allTodos() {
         return Todo.allTodos()
