@@ -13,8 +13,23 @@ const resolvers = {
       }
     },
     Mutation: {
-      removeTodo(root, args) {
-        return TodoList.removeItem(args.input.id, args.input.item_id);
+      removeTodoItem(root, args) {
+        return TodoList.removeTodoItem(args.input.id, args.input.item_id);
+      }, 
+      addTodoItem(root, args) {
+        return TodoList.addTodoItem(args.input.id, args.input.desc);
+      },
+      removeCompleted(root, args) {
+        return TodoList.removeCompleted(args.id);
+      },
+      setTodoItemDescription(root, args) {
+        return TodoList.setTodoItemDescription(args.input.id, args.input.item_id, args.input.desc);
+      },
+      checkTodoItem(root, args) {
+        return TodoList.checkTodoItem(args.input.id, args.input.item_id, args.input.checked);
+      }, 
+      checkAllTodoItems(root, args) {
+        return TodoList.checkAllTodoItems(args.input.id, args.input.checked);
       }
     },
     TodoList: {

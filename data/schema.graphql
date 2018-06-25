@@ -5,9 +5,9 @@ type Query {
 }
 
 type Mutation  {
-   removeTodo(input: RemoveTodoItemInput!): RemoveTodoItemPayload
-   addTodo(input: AddTodoItemInput!): AddTodoItemPayload
-   removeCompleted(id: String!): String
+   removeTodoItem(input: RemoveTodoItemInput!): RemoveTodoItemPayload
+   addTodoItem(input: AddTodoItemInput!): AddTodoItemPayload
+   removeCompleted(id: String!): RemoveCompletedPayload
    setTodoItemDescription(input: SetTodoItemDescriptionInput!): SetTodoItemDescriptionPayload
    checkTodoItem(input: CheckTodoItemInput!): CheckTodoItemPayload
    checkAllTodoItems(input: CheckAllTodoItemsInput!): CheckAllTodoItemsPayload
@@ -40,6 +40,10 @@ type RemoveTodoItemPayload {
   item_id: Int!
 }
 
+type RemoveCompletedPayload {
+  id: String
+}
+
 
 input AddTodoItemInput {
   id: String!
@@ -65,13 +69,13 @@ type SetTodoItemDescriptionPayload {
 
 input CheckTodoItemInput {
   id: String!
-  item_id: String!
+  item_id: Int!
   checked: Boolean!
 } 
 
 type CheckTodoItemPayload{
   id: String!
-  item_id: String!
+  item_id: Int!
   checked: Boolean!
 }
 
