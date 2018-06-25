@@ -4,9 +4,13 @@ type Query {
   todoList(id: String): TodoList
 }
 
+type Mutation  {
+   removeTodo(input: RemoveTodoItemInput!): RemoveTodoItemPayload
+}
+
 
 type TodoList {
-  id: String
+  id: ID!
   version: Int
   items: [Item]
   createdAt: String
@@ -15,8 +19,19 @@ type TodoList {
 
 
 type Item {
-    id: Int
+    id: Int!
     desc: String
     completed: Boolean
     todoList: TodoList
 }
+
+input RemoveTodoItemInput {
+  id: String!
+  item_id: Int! 
+}
+
+type RemoveTodoItemPayload {
+  id: String!
+  item_id: Int!
+}
+

@@ -12,6 +12,11 @@ const resolvers = {
         return TodoList.allTodoLists()
       }
     },
+    Mutation: {
+      removeTodo(root, args) {
+        return TodoList.removeItem(args.input.id, args.input.item_id);
+      }
+    },
     TodoList: {
       items(todoList) {
         return todoList.items;
