@@ -4,6 +4,12 @@ type Query {
   todo(id: String): Todo
 }
 
+type Mutation {
+  addTodo(input: AddTodoInput!): AddTodoPayload
+  removeTodo(input: RemoveTodoInput!): RemoveTodoPayload
+  renameTodo(input: RenameTodoInput!): RenameTodoPayload
+}
+
 type Todo {
   id: String
   version: Int
@@ -19,6 +25,49 @@ type Item {
     completed: Boolean
     todo: Todo
 }
+
+
+input AddTodoInput {
+  text: String!
+  clientMutationId: String
+}
+
+type AddTodoPayload {
+  todoEdge: TodoEdge
+
+  clientMutationId: String
+}
+
+input RemoveTodoInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type RemoveTodoPayload {
+  deletedTodoId: ID
+  clientMutationId: String
+}
+
+input RenameTodoInput {
+  id: ID!
+  text: String!
+  clientMutationId: String
+}
+
+type RenameTodoPayload {
+  todo: Todo
+  clientMutationId: String
+}
+
+
+type TodoEdge {
+
+  node: Todo
+
+
+  cursor: String!
+}
+
 
 
 
