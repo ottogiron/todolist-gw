@@ -1,31 +1,32 @@
 import fetch from 'node-fetch';
 
-const Todo = {
-    allTodos() {
+const TodoList = {
+    allTodoLists() {
         return fetch('http://localhost:8080/api/todos/')
         .then(res => res.json())
-        .then(todos => {
-            return todos.map((todo) => {
-               return mapTodo(todo)
+        .then(todoList => {
+            return todoList.map((todoList) => {
+               return mapTodoList(todoList)
             })
         })
     },
-    todo(id) {
-        this.allTodos()
-        .then(todos => {
-            return todos[0];
+    todoList(id) {
+        this.allTodoLists()
+        .then(todoList => {
+            return todoList[0];
         })
     }
+    
 }
 
-function mapTodo(todo) {
-    todo.createdAt = todo.created_at;
-    todo.updatedAt = todo.updatedAt;
-    todo.items = todo.items.map((item) => {
-        item.todo = todo;
+function mapTodoList(todoList) {
+    todoList.createdAt = todoList.created_at;
+    todoList.updatedAt = todoList.updatedAt;
+    todoList.items = todoList.items.map((item) => {
+        item.todoList = todoList;
         return item;
     });
-    return todo;
+    return todoList;
 }
 
-export { Todo }
+export { TodoList }

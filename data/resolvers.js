@@ -1,24 +1,24 @@
-import { Todo } from './conectors'
+import { TodoList } from './conectors'
 
 const resolvers = {
     Query: {
-      todo(root, args) {
-       return Todo.allTodos()
-       .then((todos) => {
-          return todos[0];
+      todoList(root, args) {
+       return TodoList.allTodoLists()
+       .then((todoList) => {
+          return todoList[0];
        });        
       },
-      allTodos() {
-        return Todo.allTodos()
+      allTodoLists() {
+        return TodoList.allTodoLists()
       }
     },
-    Todo: {
-      items(todo) {
-        return todo.items;
+    TodoList: {
+      items(todoList) {
+        return todoList.items;
       }
     },
     Item: {
-      todo(item) {
+      todoList(item) {
         return item.todo;
       }
     }

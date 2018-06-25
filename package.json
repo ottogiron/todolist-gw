@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.12.1"
   },
   "babel": {
@@ -30,7 +31,8 @@
     ]
   },
   "scripts": {
-    "start": "nodemon ./server.js --exec babel-node"
+    "start": "nodemon ./server.js --exec babel-node",
+    "test": "mocha --recursive --require babel-core/register"
   },
   "repository": {
     "type": "git",
